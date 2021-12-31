@@ -26,6 +26,21 @@ async function run() {
             res.json(result);
         });
 
+        // GET Single user API
+        app.get('/users/:email', async (req, res) => {
+            const email = req.params.email;
+            const query = { email: email };
+            const user = await usersCollection.findOne(query);
+            res.send(user)
+        })
+
+        // GET API
+        // app.get('/users', async (req, res) => {
+        //     const cursor = usersCollection.find({})
+        //     const users = await cursor.toArray()
+        //     res.send(users)
+        // })
+
     }
     finally {
         // await client.close();
