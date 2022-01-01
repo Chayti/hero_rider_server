@@ -18,6 +18,7 @@ async function run() {
         await client.connect();
         const database = client.db("heroRider");
         const usersCollection = database.collection("users");
+        const LessonsCollection = database.collection("lessons");
 
         // add user to DB
         app.post('/users', async (req, res) => {
@@ -40,6 +41,13 @@ async function run() {
         //     const users = await cursor.toArray()
         //     res.send(users)
         // })
+
+        // POST API
+        app.post('/addLesson', async (req, res) => {
+            const lesson = req.body
+            const result = await LessonsCollection.insertOne(lesson)
+            res.json(result)
+        })
 
     }
     finally {
