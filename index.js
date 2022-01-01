@@ -49,6 +49,13 @@ async function run() {
             res.json(result)
         })
 
+        // GET API
+        app.get('/lessons', async (req, res) => {
+            const cursor = LessonsCollection.find({})
+            const lessons = await cursor.toArray()
+            res.send(lessons)
+        })
+
     }
     finally {
         // await client.close();
