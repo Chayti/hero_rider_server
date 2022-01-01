@@ -38,11 +38,11 @@ async function run() {
         })
 
         // GET API
-        // app.get('/users', async (req, res) => {
-        //     const cursor = usersCollection.find({})
-        //     const users = await cursor.toArray()
-        //     res.send(users)
-        // })
+        app.get('/users', async (req, res) => {
+            const cursor = usersCollection.find({})
+            const users = await cursor.toArray()
+            res.send(users)
+        })
 
         // POST API
         app.post('/addLesson', async (req, res) => {
